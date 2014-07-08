@@ -20,18 +20,17 @@
  ******************************************************************************/
 package net.sf.taverna.t2.activities.beanshell;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
-
+import net.sf.taverna.t2.workflowmodel.impl.EditsImpl;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityFactory;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityInputPort;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityOutputPort;
 import uk.org.taverna.configuration.app.ApplicationConfiguration;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * An {@link ActivityFactory} for creating <code>BeanshellActivity</code>.
@@ -44,7 +43,7 @@ public class BeanshellActivityFactory implements ActivityFactory {
 
 	@Override
 	public BeanshellActivity createActivity() {
-		return new BeanshellActivity(applicationConfiguration);
+		return new BeanshellActivity(new EditsImpl(), applicationConfiguration);
 	}
 
 	@Override

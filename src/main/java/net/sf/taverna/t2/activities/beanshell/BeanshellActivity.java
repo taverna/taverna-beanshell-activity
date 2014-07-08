@@ -20,27 +20,24 @@
  ******************************************************************************/
 package net.sf.taverna.t2.activities.beanshell;
 
+import bsh.EvalError;
+import bsh.Interpreter;
+import bsh.TargetError;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-
 import net.sf.taverna.t2.activities.dependencyactivity.AbstractAsynchronousDependencyActivity;
 import net.sf.taverna.t2.reference.ErrorDocumentService;
 import net.sf.taverna.t2.reference.ReferenceService;
 import net.sf.taverna.t2.reference.ReferenceServiceException;
 import net.sf.taverna.t2.reference.T2Reference;
+import net.sf.taverna.t2.workflowmodel.Edits;
 import net.sf.taverna.t2.workflowmodel.OutputPort;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityInputPort;
 import net.sf.taverna.t2.workflowmodel.processor.activity.AsynchronousActivityCallback;
-
 import org.apache.log4j.Logger;
-
 import uk.org.taverna.configuration.app.ApplicationConfiguration;
-import bsh.EvalError;
-import bsh.Interpreter;
-import bsh.TargetError;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * An Activity providing Beanshell functionality.
@@ -63,8 +60,8 @@ public class BeanshellActivity extends AbstractAsynchronousDependencyActivity {
 
 	private JsonNode json;
 
-	public BeanshellActivity(ApplicationConfiguration applicationConfiguration) {
-		super(applicationConfiguration);
+	public BeanshellActivity(Edits edits, ApplicationConfiguration applicationConfiguration) {
+		super(edits, applicationConfiguration);
 		createInterpreter();
 	}
 

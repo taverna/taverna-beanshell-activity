@@ -60,7 +60,7 @@ public class BeanshellActivityTest {
 	 */
 	@Test
 	public void simpleScript() throws Exception {
-		BeanshellActivity activity = new BeanshellActivity(null);
+		BeanshellActivity activity = new BeanshellActivity(new EditsImpl(), null);
 		Edits edits = new EditsImpl();
 		edits.getAddActivityInputPortEdit(activity, new ActivityInputPortImpl("input", 0, false, null, String.class)).doEdit();
 		edits.getAddActivityOutputPortEdit(activity, new ActivityOutputPortImpl("output", 0, 0)).doEdit();

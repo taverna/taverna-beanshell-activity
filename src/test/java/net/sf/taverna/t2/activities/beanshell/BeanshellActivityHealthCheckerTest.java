@@ -60,7 +60,7 @@ public class BeanshellActivityHealthCheckerTest {
 
 	@Test
 	public void oneLinerNoSemicolon() throws Exception {
-		BeanshellActivity activity = new BeanshellActivity(null);
+		BeanshellActivity activity = new BeanshellActivity(new EditsImpl(), null);
 		configuration.put("script", "a = 5+3");
 		// Notice lack of ;
 		activity.configure(configuration);
@@ -80,7 +80,7 @@ public class BeanshellActivityHealthCheckerTest {
 
 	@Test
 	public void oneLiner() throws Exception {
-		BeanshellActivity activity = new BeanshellActivity(null);
+		BeanshellActivity activity = new BeanshellActivity(new EditsImpl(), null);
 		configuration.put("script", "System.out.println(\"Hello\");");
 		activity.configure(configuration);
 
@@ -99,7 +99,7 @@ public class BeanshellActivityHealthCheckerTest {
 
 	@Test
 	public void threeLines() throws Exception {
-		BeanshellActivity activity = new BeanshellActivity(null);
+		BeanshellActivity activity = new BeanshellActivity(new EditsImpl(), null);
 		configuration.put("script", "if (2>1) {\n" +
 				"  new Integer(4);\n" +
 				"}");
@@ -123,7 +123,7 @@ public class BeanshellActivityHealthCheckerTest {
 
 	@Test
 	public void invalidScript() throws Exception {
-		BeanshellActivity activity = new BeanshellActivity(null);
+		BeanshellActivity activity = new BeanshellActivity(new EditsImpl(), null);
 		configuration.put("script", "invalid script 5 +");
 		activity.configure(configuration);
 
@@ -148,7 +148,7 @@ public class BeanshellActivityHealthCheckerTest {
 
 	@Test
 	public void strangeWhitespace() throws Exception {
-		BeanshellActivity activity = new BeanshellActivity(null);
+		BeanshellActivity activity = new BeanshellActivity(new EditsImpl(), null);
 		configuration.put("script", "b = \"fish\";\n" +
 				"a = 2+3\n" +
 				"\n" +
